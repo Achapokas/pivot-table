@@ -1,4 +1,4 @@
-{"preview":false,"result":{"All_Traffic.dest":"10.10.10.10","All_Traffic.src":"192.168.0.2","sum_bytes":"312"}},
+[{"preview":false,"result":{"All_Traffic.dest":"10.10.10.10","All_Traffic.src":"192.168.0.2","sum_bytes":"312"}},
 {"preview":false,"result":{"All_Traffic.dest":"107.20.249.177","All_Traffic.src":"192.168.0.2","sum_bytes":"4655"}},
 {"preview":false,"result":{"All_Traffic.dest":"107.21.121.43","All_Traffic.src":"192.168.0.3","sum_bytes":"1689"}},
 {"preview":false,"result":{"All_Traffic.dest":"108.59.9.145","All_Traffic.src":"192.168.0.2","sum_bytes":"4786"}},
@@ -247,4 +247,4 @@
 {"preview":false,"result":{"All_Traffic.dest":"195.71.11.67","All_Traffic.src":"192.168.0.6","sum_bytes":"168432"}},
 {"preview":false,"result":{"All_Traffic.dest":"195.82.146.114","All_Traffic.src":"192.168.0.6","sum_bytes":"712"}},
 {"preview":false,"result":{"All_Traffic.dest":"198.102.153.51","All_Traffic.src":"192.168.0.2","sum_bytes":"1194561"}},
-{"preview":false,"lastrow":true,"result":{"All_Traffic.dest":"199.102.233.31","All_Traffic.src":"192.168.0.6","sum_bytes":"218684"}}
+{"preview":false,"lastrow":true,"result":{"All_Traffic.dest":"199.102.233.31","All_Traffic.src":"192.168.0.6","sum_bytes":"218684"}}]

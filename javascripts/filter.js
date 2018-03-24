@@ -1,15 +1,9 @@
-function request() {
-  const request = new Request('https://achapokas.github.io/data-store/javascripts/traffic_bytes.json');
+const bytes = new Request('https://achapokas.github.io/pivot-table/javascripts/bytes.json');
 
-  fetch(request)
-    .then(response => {
-      if (response.status === 200) {
-        return response.json();
-      } else {
-        throw new Error(`Cannot locate ${request} file.`);
-      }
-    })
-    .then(response => {
-      parseObject(response)
-    })
-}
+fetch(bytes)
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(json){
+    console.log(json);
+  });
