@@ -1,0 +1,69 @@
+$spacing-unit: 8px;
+
+
+html {
+  font-family: helvetica;
+  font-size: 16px;
+}
+
+button {
+  margin: 0 $spacing-unit;
+  padding: $spacing-unit ($spacing-unit * 2);
+  font-size: 14px;
+  background: transparent;
+  letter-spacing: 1px;
+  border: 1px solid #000;
+}
+
+input {
+  margin-right: $spacing-unit;
+  width: 200px;
+  height: 32px;
+  font-size: 16px;
+  border: 1px solid #000;
+}
+
+select {
+  margin: 0 $spacing-unit;
+  width: 200px;
+  height: 35px;
+  font-size: 16px;
+  letter-spacing: 1px;
+  border: 1px solid black;
+  background: transparent;
+}
+
+  main {
+    margin: ($spacing-unit * 5) auto;
+    max-width: 1024px;
+  }
+
+    table {
+      margin-top: $spacing-unit;
+      width: 100%;
+      border: 1px solid #000;
+      border-collapse: collapse;
+    }
+
+      tr {
+         border-top: 1px solid #000
+      }
+
+        th {
+          padding: $spacing-unit;
+
+          &:nth-child(1n) {
+            border-right: 1px solid #000;
+          }
+        }
+
+        td {
+          padding: $spacing-unit;
+          width: 33.33%;
+          text-align: center;
+          cursor: pointer;
+
+          &:nth-child(1n) {
+            border-right: 1px solid #000;
+          }
+        }

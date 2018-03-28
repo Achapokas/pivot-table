@@ -2,8 +2,29 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel ="stylesheet" type="text/css" href="stylesheets/styles.css">
   </head>
   <body>
+    <main>
+      <form id="filter" name="filter">
+        <input type="text" name="address" required>
+        <select name="filter-by">
+          <option>Destination</option>
+          <option>Source</option>
+        </select>
+        <button aria-label="Apply">Apply Filters</button>
+        <button aria-label="Reset" type="reset">Reset</button>
+      </form>
+      <table id="pivot">
+        <thead id="thead">
+          <tr>
+            <th>Destination</th>
+            <th>Source</th>
+            <th>Bytes</th>
+          </tr>
+        </thead>
+      </table>
+    </main>
   </body>
   <script src="javascripts/filter.js"></script>
 </html>

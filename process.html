@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel ="stylesheet" type="text/css" href="stylesheets/styles.css">
+  </head>
+  <body>
+    <h1>Steps</h1>
+    <ul>
+      <li>Display data in tabular format</li>
+      <li>Create pivots that allow user to filter the data down further in multiple ways
+        <ol>
+          <li>Dump all data on the page</li>
+          <li>If the user clicks on an IP provide two options
+            <ol>
+              <li>filter by dest
+                <ul>
+                  <li>If user filters by src, for example, only show that IP addresses dest data</li>
+                  <li><img src="desc.png"></li>
+                </ul>
+              </li>
+              <li>filter by src</li>
+            </ol>
+          </li>
+        </ol>
+      </li>
+      <li>When clicked give the user options to filter in atleast two ways
+        <ul>
+          <li>Traffic to the address</li>
+          <li>Traffic from the address</li>
+          <li>*These actions should be clear</li>
+        </ul>
+      </li>
+      <li>When the user hits refresh perserve state(and also know what filter is being
+performed)</li>
+      <li>Form history/navigation: Basically if I do at least 3 pivots in a row, I should have an easy way to get
+back to my initial state</li>
+    </ul>
+    <ul>
+      <li>✓ Setup Sass for project</li>
+      <li>Review JSON data to better understand filter rules
+        <ul>
+          <li>192.168.0.2 is a traffice src, but it is also a destination</li>
+        </ul>
+      </li>
+      <li>Research Pivot tables</li>
+      <li>Create pivot table in HTML. Access layout for styling treatments</li>
+    </ul>
+  </body>
+  <script src="javascripts/filter.js"></script>
+</html>
