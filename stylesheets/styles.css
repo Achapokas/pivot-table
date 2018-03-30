@@ -10,8 +10,13 @@ button {
   letter-spacing: 1px;
   border: 1px solid #000; }
 
+label {
+  display: block;
+  padding-bottom: 8px; }
+
 input {
   margin-right: 8px;
+  padding-left: 8px;
   width: 200px;
   height: 32px;
   font-size: 16px;

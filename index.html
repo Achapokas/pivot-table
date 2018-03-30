@@ -7,13 +7,14 @@
   <body>
     <main>
       <form id="filter" name="filter">
-        <input type="text" name="address" required>
+        <label for"address">Enter IP Address:</label>
+        <input type="text" name="address" placeholder="192.168.0.2" required>
         <select name="filter-by">
           <option>Destination</option>
           <option>Source</option>
         </select>
         <button aria-label="Apply">Apply Filters</button>
-        <button aria-label="Reset" type="reset">Reset</button>
+        <button aria-label="Reset" name="reset">Reset</button>
       </form>
       <table id="pivot">
         <thead id="thead">

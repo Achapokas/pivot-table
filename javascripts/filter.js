@@ -8,7 +8,7 @@ const request = function(){
       return response.json();
     })
     .catch(function(reponse){
-      return 'Request not made'
+      return 'Request failed to complete'
     })
     .then(function(json){
       insertTbody(json)
@@ -16,21 +16,18 @@ const request = function(){
 },
 
 seedTable = function(results) {
-  let output = results.map((i) => {
-    return `<tr>
-              <td>${i["All_Traffic.dest"]}</td>
-              <td>${i["All_Traffic.src"]}</td>
-              <td>${i.sum_bytes}</td>
-            </tr>`;
-  }).join('');
 
-  const data = `
-  <tbody>
-    ${output}
-  </tbody>
-  `
+  const template = `<tbody>
+    ${results.map((i) => `
+      <tr>
+        <td>${i["All_Traffic.dest"]}</td>
+        <td>${i["All_Traffic.src"]}</td>
+        <td>${i.sum_bytes}</td>
+      </tr>`
+    ).join('')}
+  </tbody>`
 
-  return data
+  return template
 },
 
 clone = function(address, event) {
@@ -40,9 +37,9 @@ clone = function(address, event) {
    address.setAttribute("value", targetText);
 },
 
-sortRows = function(td, tr, inputValue) {
+sortRows = function(td, tr, inputValue, i) {
   if (td) {
-    if(td.innerHTML.indexOf(inputValue) > -1 ) {
+    if(inputValue === td.innerHTML) {
       tr.style.display = ""
     } else {
       tr.style.display = "none"
@@ -50,13 +47,34 @@ sortRows = function(td, tr, inputValue) {
   }
 }
 
+setsFilter = function(select, address) {
+  const selectIndex = select.options[select.selectedIndex].text,
+        inputValue = address.value,
+        tr = document.getElementsByTagName("tr");
+
+    if ( selectIndex === "Destination" ) {
+      for(var i = 0; i < tr.length; i++) {
+        var td = tr[i].getElementsByTagName("td")[0];
+
+        sortRows(td, tr[i], inputValue, i)
+      }
+    } else {
+      for(var i = 0; i < tr.length; i++) {
+          var td = tr[i].getElementsByTagName("td")[1];
+
+          sortRows(td, tr[i], inputValue, i)
+      }
+    }
+}
+
 insertTbody = function(json) {
   const table = document.getElementById("pivot"),
         thead = document.getElementById("thead"),
         form = document.forms["filter"],
         address = form.elements["address"],
-        select = form.elements["filter-by"];
-
+        select = form.elements["filter-by"],
+        reset = form.elements["reset"],
+        tr = document.getElementsByTagName("tr");
 
   var results = [],
       dests = [];
@@ -73,28 +91,33 @@ insertTbody = function(json) {
 
   table.addEventListener("click", function(event){ clone(address, event) })
 
+  form.addEventListener("submit", function(event) { event.preventDefault(); setsFilter(select, address)})
 
-  form.addEventListener("submit", function(event) {
+  reset.addEventListener("click", function(event){
     event.preventDefault();
-    const selectIndex = select.options[select.selectedIndex].text,
-          inputValue = address.value,
-          tr = document.getElementsByTagName("tr");
-
-      if ( selectIndex === "Destination" ) {
-        for(var i = 0; i < tr.length; i++) {
-          var td = tr[i].getElementsByTagName("td")[0];
-          sortRows(td, tr[i], inputValue)
-        }
-      } else {
-        for(var i = 0; i < tr.length; i++) {
-            var td = tr[i].getElementsByTagName("td")[1];
-
-            sortRows(td, tr[i], inputValue)
-        }
-      }
+    for (var i = 0; i < tr.length; i++) {
+      tr[i].removeAttribute("style")
+    }
   })
 
+window.onbeforeunload = function(){
+  for(var i = 0; i < tr.length; i++) {
+    sessionStorage.setItem('style' + [i], tr[i].style.display)
+  }
 }
 
+window.onload = function() {
+  for(var i = 0; i < tr.length; i++) {
+    var test = sessionStorage.getItem('style' + [i]);
+
+    tr[i].style.display = test
+  }
+}
+
+  // Store session storage
+  // https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API
+  // If input value returns empty string alert user
+  // Validation on "blur" provide a tooltip for user to include IP address
+}
 
 request()
