@@ -4,15 +4,41 @@ $spacing-unit: 8px;
 html {
   font-family: helvetica;
   font-size: 16px;
+  background-color: #faf5f0;
+}
+
+body {
+  margin: 0;
+}
+
+h2 {
+  margin: 0;
+  padding: 0 0 $spacing-unit;
+}
+
+a {
+  display: block;
+  padding: $spacing-unit 0;
+  color: #000;
+  text-decoration: none;
+
+  &:hover {
+    font-style: italic;
+  }
 }
 
 button {
-  margin: 0 $spacing-unit;
+  margin: 0;
   padding: $spacing-unit ($spacing-unit * 2);
   font-size: 14px;
   background: transparent;
   letter-spacing: 1px;
   border: 1px solid #000;
+  background: #fff;
+
+  @media(min-width: 775px) {
+    margin: 0 $spacing-unit;
+  }
 }
 
 label {
@@ -30,46 +56,79 @@ input {
 }
 
 select {
-  margin: 0 $spacing-unit;
+  display: block;
+  margin: $spacing-unit 0;
   width: 200px;
   height: 35px;
   font-size: 16px;
   letter-spacing: 1px;
   border: 1px solid black;
-  background: transparent;
-}
+  background: #fff;
 
-  main {
-    margin: ($spacing-unit * 5) auto;
-    max-width: 1024px;
+  @media(min-width: 775px) {
+    margin: 0 $spacing-unit;
+    display: inline-block;
+  }
+}
+  .page-content {
+    display: block;
+    padding: $spacing-unit;
+
+    @media(min-width: 775px) {
+      display: flex;
+      padding: 0
+    }
   }
 
-    table {
-      margin-top: $spacing-unit;
-      width: 100%;
-      border: 1px solid #000;
-      border-collapse: collapse;
+    aside {
+      width: 15%;
+
+      @media(min-width: 776px) {
+        margin-top: $spacing-unit * 3;
+        padding: 0 $spacing-unit;
+      }
     }
 
-      tr {
-         border-top: 1px solid #000
+    main {
+      width: 100%;
+
+      @media(min-width: 775px) {
+        width: 85%;
+      }
+    }
+
+      table {
+        margin-top: $spacing-unit * 3;
+        width: 100%;
+        border: 1px solid #000;
+        border-collapse: collapse;
       }
 
-        th {
-          padding: $spacing-unit;
-
-          &:nth-child(1n) {
-            border-right: 1px solid #000;
-          }
+        tr {
+           border-top: 1px solid #000
         }
 
-        td {
-          padding: $spacing-unit;
-          width: 33.33%;
-          text-align: center;
-          cursor: pointer;
+          th {
+            padding: $spacing-unit;
 
-          &:nth-child(1n) {
-            border-right: 1px solid #000;
+            &:nth-child(1n) {
+              border-right: 1px solid #000;
+            }
           }
-        }
+
+          td {
+            padding: $spacing-unit;
+            width: auto;
+            text-align: center;
+            cursor: pointer;
+            background: #fff;
+
+            @media(min-width: 775px) {
+              width: 33.33%;
+            }
+
+
+            &:nth-child(1n) {
+              border-right: 1px solid #000;
+            }
+          }
