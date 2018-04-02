@@ -82,14 +82,6 @@ filterTemplate = function(select, address) {
   aside.insertAdjacentHTML('beforeEnd', asideLinks);
 }
 
-test = function(tr) {
-  for(var i = 0; i < tr.length; i++) {
-    var style = sessionStorage.getItem('style' + [i]);
-
-    tr[i].style.display = style
-  }
-},
-
 init = function() {
 const table = document.getElementById("pivot"),
       tr = table.getElementsByTagName("tr"),
@@ -117,15 +109,13 @@ const table = document.getElementById("pivot"),
     }
   });
 
-  window.addEventListener("DOMContentLoaded", test(tr), false);
+  window.onload = function() {
+    for(var i = 0; i < tr.length; i++) {
+      var style = sessionStorage.getItem('style' + [i]);
 
-  // window.onload = function() {
-  //   for(var i = 0; i < tr.length; i++) {
-  //     var style = sessionStorage.getItem('style' + [i]);
-
-  //     tr[i].style.display = style
-  //   }
-  // }
+      tr[i].style.display = style
+    }
+  }
 },
 
 recentFilters = function() {
@@ -135,11 +125,11 @@ recentFilters = function() {
   var callback = function(mutationsList) {
       for(var mutation of mutationsList) {
           if (mutation.type == 'childList') {
-            var childNodes = targetNode.querySelectorAll('a'),
-            table = document.getElementById("pivot"),
-            form = document.forms["filter"],
-            address = form.elements["address"],
-            select = form.elements["filter-by"];
+            const childNodes = targetNode.querySelectorAll('a'),
+                  table = document.getElementById("pivot"),
+                  form = document.forms["filter"],
+                  address = form.elements["address"],
+                  select = form.elements["filter-by"];
 
 
             targetNode.addEventListener('click', function(event){
